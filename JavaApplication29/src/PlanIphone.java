@@ -7,6 +7,6 @@
  *
  * @author anavalle
  */
-public class PlanSamsung {
+public class PlanIphone {
     
 }

@@ -1,32 +1,27 @@
 
 public abstract class Plan {
     
-    private String numeroTelefono;
-    private String nombreCliente;
-
-    
-    public Plan(String numeroTelefono, String nombreCliente) {
+    protected int numeroTelefono;
+    protected String nombreCliente;
+           
+    public Plan(int numeroTelefono, String nombreCliente){
         this.numeroTelefono = numeroTelefono;
         this.nombreCliente = nombreCliente;
     }
-
-    
-    public String getNumeroTelefono() {
+  
+    public int getTelefono(){
         return numeroTelefono;
     }
-
-    public String getNombreCliente() {
+    public String getNombre(){
         return nombreCliente;
     }
-
     
-    public abstract double pagoMensual(int mins, int msgs);
-
-    
-    public void imprimir() {
-        System.out.println("Número de Teléfono: " + numeroTelefono);
-        System.out.println("Nombre del Cliente: " + nombreCliente);
+    abstract double pagoMensual(int mins, int msgs);
+ 
+    public String imprimir() {
+        return "Numero de Cliente: " + numeroTelefono + "\nNombre de Cliente: " + nombreCliente;
     }
+    
 }
 
 
