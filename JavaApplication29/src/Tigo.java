@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Tigo {
@@ -12,8 +11,7 @@ public class Tigo {
         if (!busqueda(numeroTel, extra, tipo)) {
             switch (tipo.toUpperCase()) {
                 case "IPHONE":
-                    PlanIphone nuevoIphone = new PlanIphone(numeroTel, nombre);
-                    nuevoIphone.setEmail(extra);
+                    PlanIphone nuevoIphone = new PlanIphone(numeroTel, nombre, extra);
                     planes.add(nuevoIphone);
                     break;
                 case "SAMSUNG":
@@ -33,11 +31,11 @@ public class Tigo {
             if (plan.getTelefono() == numeroTel) {
                 return true;
             }
-            if (tipo.equalsIgnoreCase("IPHONE")) {
+            if (tipo.equalsIgnoreCase("IPHONE") && plan instanceof PlanIphone) {
                 if (((PlanIphone) plan).getEmail().equals(extra)) {
                     return true;
                 }
-            } else if (tipo.equalsIgnoreCase("SAMSUNG")) {
+            } else if (tipo.equalsIgnoreCase("SAMSUNG") && plan instanceof PlanSamsung) {
                 if (((PlanSamsung) plan).getPin().equals(extra)) {
                     return true;
                 }
@@ -67,19 +65,23 @@ public class Tigo {
     }
 
     public void lista() {
-        int cont_IPhone = 0;
-        int cont_Samsung = 0;
+        int contIPhone = 0;
+        int contSamsung = 0;
 
         for (Plan plan : planes) {
             System.out.println(plan.imprimir());
             if (plan instanceof PlanIphone) {
-                cont_IPhone++;
+                contIPhone++;
             } else if (plan instanceof PlanSamsung) {
-                cont_Samsung++;
+                contSamsung++;
             }
         }
 
-        System.out.println("Cantidad total de IPhones: " + cont_IPhone);
-        System.out.println("Cantidad total de Samsungs: " + cont_Samsung);
+        System.out.println("Cantidad total de IPhones: " + contIPhone);
+        System.out.println("Cantidad total de Samsungs: " + contSamsung);
+    }
+
+    public ArrayList<Plan> getPlanes() {
+        return planes;
     }
 }
