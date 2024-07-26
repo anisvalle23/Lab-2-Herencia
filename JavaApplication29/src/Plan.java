@@ -1,5 +1,6 @@
 
-public abstract class Plan {
+
+abstract class Plan {
     
     protected int numeroTelefono;
     protected String nombreCliente;
@@ -23,5 +24,6 @@ public abstract class Plan {
     }
     
 }
+
 
 
